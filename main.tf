@@ -13,8 +13,15 @@ provider "gitlab" {
   insecure = var.insecure
 }
 
+
 resource "gitlab_group" "top_level_group" {
-  name        = var.top_level_group
-  description = var.top_level_group_description
+  name        = var.top_level_group_name
   path        = var.top_level_group_path
+}
+
+resource "gitlab_group_ldap_link" "top_level_group_developer" {
+  group         = gitlab_group.top_level_group.id
+  cn            = var.gitlab_users_group
+  group_access  = "developer"
+  ldap_provider = "ldapmain"
 }

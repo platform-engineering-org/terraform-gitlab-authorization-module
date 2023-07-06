@@ -14,23 +14,17 @@ variable "base_url" {
   description = "gitlab api end point"
 }
 
-variable "top_level_group" {
+variable "top_level_group_name" {
   type        = string
-  description = "GitLab top level group"
-}
-
-variable "top_level_group_id" {
-  type        = string
-  description = "GitLab top level group"
-  sensitive = true
-}
-
-variable "top_level_group_description" {
-  type        = string
-  description = "GitLab top level group description"
+  description = "GitLab top level group name"
 }
 
 variable "top_level_group_path" {
   type        = string
   description = "GitLab top level group path"
+}
+
+variable "gitlab_users_group" {
+  type        = string
+  description = "GitLab users group"
 }
