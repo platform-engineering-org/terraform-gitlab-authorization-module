@@ -2,7 +2,7 @@ terraform {
   required_providers {
     gitlab = {
       source  = "gitlabhq/gitlab"
-      version = "16.0.3"
+      version = "16.1.0"
     }
   }
 }
