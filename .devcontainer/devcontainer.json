@@ -1,0 +1,9 @@
+{
+    "name": "gitlab-configuration",
+    "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+    "features": {
+        "ghcr.io/devcontainers/features/terraform:1.3.2": {
+            "version": "1.5.2"
+        }
+    }
+}
