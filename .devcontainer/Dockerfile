@@ -4,7 +4,7 @@ ARG HOME=/root
 
 COPY requirements.txt .tool-versions $HOME
 
-# renovate:  datasource=github-releases depName=asdf-vm/asdf
+# renovate: datasource=github-releases depName=asdf-vm/asdf
 ENV ASDF_VERSION=v0.11.3
 
 RUN dnf install -y git python3-pip make unzip && \
