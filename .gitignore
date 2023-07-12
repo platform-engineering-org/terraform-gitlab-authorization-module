@@ -1,4 +1,4 @@
-*.env
+*.env*
 *.tfvars
 *.lock.hcl
 *.tfstate

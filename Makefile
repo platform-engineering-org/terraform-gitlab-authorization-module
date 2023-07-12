@@ -14,6 +14,7 @@ apply:
 
 import:
 	dotenv run terraform import gitlab_group.top_level_group $(TF_VAR_top_level_group_full_path)
+	dotenv run terraform import gitlab_user.bot_user $(TF_VAR_gitlab_bot_user)
 
 all: clean init plan
 
