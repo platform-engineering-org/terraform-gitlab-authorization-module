@@ -28,3 +28,23 @@ variable "gitlab_users_group" {
   type        = string
   description = "GitLab users group"
 }
+
+variable "gitlab_bot_user_id" {
+  type        = number
+  description = "GitLab bot user id"
+}
+
+variable "gitlab_bot_user_name" {
+  type        = string
+  description = "GitLab bot user name"
+}
+
+variable "gitlab_bot_user_username" {
+  type        = string
+  description = "GitLab bot user username"
+}
+
+variable "gitlab_bot_user_email" {
+  type        = string
+  description = "GitLab bot user email"
+}

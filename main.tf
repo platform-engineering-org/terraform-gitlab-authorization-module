@@ -13,6 +13,11 @@ provider "gitlab" {
   insecure = var.insecure
 }
 
+resource "gitlab_user" "bot_user" {
+  name     = var.gitlab_bot_user_name
+  username = var.gitlab_bot_user_username
+  email    = var.gitlab_bot_user_email
+}
 
 resource "gitlab_group" "top_level_group" {
   name = var.top_level_group_name
