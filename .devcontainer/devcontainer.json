@@ -2,5 +2,8 @@
     "name": "gitlab-configuration",
     "build": {
         "dockerfile": "Dockerfile"
-    }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.aws,target=/root/.aws,type=bind,consistency=cached"
+    ]
 }

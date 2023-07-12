@@ -3,3 +3,6 @@
 *.lock.hcl
 *.tfstate
 .terraform
+.vscode/
+*.backup
+backend.hcl
