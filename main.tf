@@ -15,8 +15,8 @@ provider "gitlab" {
 
 
 resource "gitlab_group" "top_level_group" {
-  name        = var.top_level_group_name
-  path        = var.top_level_group_path
+  name = var.top_level_group_name
+  path = var.top_level_group_path
 }
 
 resource "gitlab_group_ldap_link" "top_level_group_developer" {

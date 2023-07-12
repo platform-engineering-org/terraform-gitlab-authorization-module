@@ -4,7 +4,7 @@ include .env
 export
 
 init:
-	terraform init
+	terraform init -backend-config=backend.hcl
 
 plan:
 	dotenv run terraform plan
