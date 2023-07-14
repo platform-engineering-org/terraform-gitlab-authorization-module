@@ -4,6 +4,8 @@
         "dockerfile": "Dockerfile"
     },
     "mounts": [
-        "source=${localEnv:HOME}/.aws,target=/root/.aws,type=bind,consistency=cached"
-    ]
+        "source=${localEnv:HOME}/.aws,target=/root/.aws,type=bind,consistency=cached",
+        "source=/etc/pki/ca-trust/source/anchors/,target=/etc/pki/ca-trust/source/anchors/,type=bind,consistency=cached"
+    ],
+    "postStartCommand": "update-ca-trust"
 }
