@@ -7,7 +7,10 @@ COPY requirements.txt .tool-versions $HOME
 # renovate: datasource=github-releases depName=asdf-vm/asdf
 ENV ASDF_VERSION=v0.12.0
 
-RUN dnf install -y git python3-pip make unzip && \
+RUN curl -Lo /etc/yum.repos.d/rhel7-csb-stage.repo http://hdn.corp.redhat.com/rhel7-csb-stage/rhel7-csb-stage.repo && \
+    sed -i 's/https:/http:/;s/gpgcheck=1/gpgcheck=0/' /etc/yum.repos.d/rhel7-csb-stage.repo && \
+    dnf update -y && \
+    dnf install -y git python3-pip make unzip redhat-internal-cert-install && \
     dnf clean all -y && \
     git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch "${ASDF_VERSION}" --depth 1 && \
     . $HOME/.asdf/asdf.sh && \
