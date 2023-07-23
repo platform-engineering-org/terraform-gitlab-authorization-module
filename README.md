@@ -11,3 +11,24 @@
 [1]: https://img.shields.io/badge/renovate-enabled-brightgreen?logo=renovate
 [2]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit
 [3]: https://img.shields.io/static/v1?label=devcontainer&message=enabled&logo=visualstudiocode&color=007ACC&logoColor=007ACC
+
+## DEV environment
+
+* Use devcontainer to spin development environment
+* Rename the templates files and populate the values:
+   * env.template -> .env
+   * backend.hcl.template -> backend.hcl
+* Use the import make target to import pre-exising resources
+* Execute the terraform plan:
+
+```shell
+make init
+make plan
+make apply
+```
+
+or
+
+```shell
+make init plan apply
+```
