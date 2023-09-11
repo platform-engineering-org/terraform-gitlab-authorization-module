@@ -24,9 +24,25 @@ resource "gitlab_group" "top_level_group" {
   path = var.top_level_group_path
 }
 
-resource "gitlab_group_ldap_link" "top_level_group_developer" {
+locals {
+  users_groups = [
+    {
+      name = var.gitlab_owner_users_group
+      role = "owner"
+    },
+    {
+      name = var.gitlab_developer_users_group
+      role = "developer"
+    }
+  ]
+}
+
+resource "gitlab_group_ldap_link" "ldap_link" {
+  for_each   = {
+    for index, user_group in local.users_groups: user_group.name => user_group
+  }
   group         = gitlab_group.top_level_group.id
-  cn            = var.gitlab_users_group
-  group_access  = "developer"
+  cn            = each.value.name
+  group_access  = each.value.role
   ldap_provider = "ldapmain"
 }

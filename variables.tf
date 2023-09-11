@@ -24,9 +24,14 @@ variable "top_level_group_path" {
   description = "GitLab top level group path"
 }
 
-variable "gitlab_users_group" {
+variable "gitlab_developer_users_group" {
   type        = string
-  description = "GitLab users group"
+  description = "GitLab developer users group"
+}
+
+variable "gitlab_owner_users_group" {
+  type        = string
+  description = "GitLab owner users group"
 }
 
 variable "gitlab_bot_user_id" {
