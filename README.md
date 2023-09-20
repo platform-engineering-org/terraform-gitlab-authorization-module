@@ -16,19 +16,18 @@
 
 * Use devcontainer to spin development environment
 * Rename the templates files and populate the values:
-   * env.template -> .env
-   * backend.hcl.template -> backend.hcl
+  * backend.hcl.template -> backend.hcl
 * Use the import make target to import pre-exising resources
 * Execute the terraform plan:
 
 ```shell
-make init
-make plan
-make apply
+make tf/init
+make tf/plan
+make tf/apply
 ```
 
 or
 
 ```shell
-make init plan apply
+make tf/init tf/plan tf/apply
 ```
