@@ -1,9 +1,6 @@
-*.env*
 *.tfvars
 *.lock.hcl
 *.tfstate
 .terraform
 .vscode/
 *.backup
-backend.hcl
-.terragrunt-cache/
