@@ -2,6 +2,16 @@ data "gitlab_group" "top_level_group" {
   full_path = var.top_level_group_full_path
 }
 
+data "gitlab_user" "bot_user" {
+  username = var.bot_user_name
+}
+
+resource "gitlab_group_membership" "bot_user_membership" {
+  group_id     = data.gitlab_group.top_level_group.id
+  user_id      = data.gitlab_user.bot_user.id
+  access_level = "owner"
+}
+
 resource "gitlab_group_ldap_link" "developers_group" {
   group         = data.gitlab_group.top_level_group.id
   cn            = var.ldap_developers_group
