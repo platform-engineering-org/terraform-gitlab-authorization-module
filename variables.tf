@@ -21,6 +21,10 @@ variable "top_level_group_full_path" {
   description = "GitLab top level group full path"
 }
 
+variable "bot_user_name" {
+  type        = string
+  description = "Bot user name"
+}
 variable "ldap_developers_group" {
   type        = string
   description = "LDAP developers group"
