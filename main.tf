@@ -2,14 +2,14 @@ data "gitlab_group" "top_level_group" {
   full_path = var.top_level_group_full_path
 }
 
-data "gitlab_user" "bot_user" {
-  username = var.bot_user_name
+data "gitlab_projects" "group_projects" {
+  group_id          = data.gitlab_group.top_level_group.id
+  include_subgroups = true
+  archived          = false
 }
 
-resource "gitlab_group_membership" "bot_user_membership" {
-  group_id     = data.gitlab_group.top_level_group.id
-  user_id      = data.gitlab_user.bot_user.id
-  access_level = "owner"
+data "gitlab_user" "bot_user" {
+  username = var.bot_user_name
 }
 
 resource "gitlab_group_ldap_link" "developers_group" {
@@ -24,4 +24,15 @@ resource "gitlab_group_ldap_link" "owners_group" {
   cn            = var.ldap_owners_group
   group_access  = "owner"
   ldap_provider = "ldapmain"
+}
+
+resource "gitlab_branch_protection" "branch_protection" {
+  for_each                     = { for project in data.gitlab_projects.group_projects.projects : project.id => project }
+  project                      = each.key
+  branch                       = "main"
+  push_access_level            = "maintainer"
+  merge_access_level           = "maintainer"
+  unprotect_access_level       = "maintainer"
+  allow_force_push             = false
+  code_owner_approval_required = true
 }
